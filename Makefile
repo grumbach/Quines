@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/09 16:00:37 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/09 16:30:25 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ ${QUINE1}: ${OBJ1}
 
 ${QUINE2}: ${OBJ2}
 	@echo ${B}Compiling [${QUINE2}]...${X}
-	@${CC} ${CFLAGS} -o $@ ${OBJ1}
+	@${CC} ${CFLAGS} -o $@ ${OBJ2}
 	@echo ${G}Success"   "[${QUINE2}]${X}
 
 ${QUINE3}: ${OBJ3}
@@ -71,7 +71,7 @@ ${QUINE3}: ${OBJ3}
 ${OBJDIR}/%.o: ./srcs/%.c
 	@echo ${Y}Compiling [$@]...${X}
 	@/bin/mkdir -p ${OBJDIR}
-	@${CC} ${CFLAGS} ${INCL} -I. -c -o $@ $<
+	@${CC} ${CFLAGS} -c -o $@ $<
 	@printf ${UP}${CUT}
 
 clean:
@@ -102,15 +102,15 @@ quine:
 
 diff_colleen: ${QUINE1}
 	@echo ${WB}"-- diff Colleen --"${X}
-	@./Colleen > tmp_Colleen; diff srcs/Colleen.c tmp_Colleen
+	@./Colleen > tmp_Colleen && diff srcs/Colleen.c tmp_Colleen
 
 diff_grace: ${QUINE2}
 	@echo ${WB}"-- diff Grace --"${X}
-	@./Grace; diff srcs/Grace.c Grace_kid.c
+	@/bin/rm -f Grace_kid.c; ./Grace && diff srcs/Grace.c Grace_kid.c
 
 diff_sully: ${QUINE3}
 	@echo ${WB}"-- diff Sully --"${X}
-	@./Sully; diff srcs/Sully.c Sully_0.c Sully_1.c
+	@./Sully && diff srcs/Sully.c Sully_0.c Sully_1.c
 
 diff: art diff_colleen diff_grace diff_sully
 
