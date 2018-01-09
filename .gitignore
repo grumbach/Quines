@@ -1,0 +1,7 @@
+*.o
+*.a
+.D*
+*.dSYM
+tmp_Colleen
+Grace_kid.c
+Sully_*.c
