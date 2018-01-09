@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/09 14:50:34 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/09 16:00:37 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ C = "\033[36m"
 BG = "\033[32;1m"
 BB = "\033[34;1m"
 WR = "\033[0m""\033[31;5m"
+WB = "\033[0m""\033[34;5m"
 X = "\033[0m"
 UP = "\033[A"
 CUT = "\033[K"
@@ -99,10 +100,19 @@ silent: ${QUINE1} ${QUINE2} ${QUINE3}
 quine:
 	@cat Makefile
 
-diff: art silent
-	./Colleen > tmp_Colleen; diff srcs/Colleen.c tmp_Colleen
-	# ./Grace; diff srcs/Grace.c Grace_kid.c
-	# ./Sully; diff srcs/Sully.c Sully_0.c
+diff_colleen: ${QUINE1}
+	@echo ${WB}"-- diff Colleen --"${X}
+	@./Colleen > tmp_Colleen; diff srcs/Colleen.c tmp_Colleen
+
+diff_grace: ${QUINE2}
+	@echo ${WB}"-- diff Grace --"${X}
+	@./Grace; diff srcs/Grace.c Grace_kid.c
+
+diff_sully: ${QUINE3}
+	@echo ${WB}"-- diff Sully --"${X}
+	@./Sully; diff srcs/Sully.c Sully_0.c Sully_1.c
+
+diff: art diff_colleen diff_grace diff_sully
 
 art:
 	@echo ${BG}
@@ -115,4 +125,4 @@ art:
 
 ############################## PHONY ###########################################
 
-.PHONY: all clean fclean re test quine silent diff art
+.PHONY: all clean fclean re test quine silent art diff diff_colleen diff_grace diff_sully

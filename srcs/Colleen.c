@@ -1,4 +1,6 @@
-// Comment outside
+/*
+	Comment outside
+*/
 # include <stdio.h>
 
 void		other_func(char **str)
@@ -43,7 +45,9 @@ int			main()
 		"		NULL",
 		"%s%c",
 		"%c%c%c%s%c,%c",
-		"// Comment outside",
+		"/*",
+		"	Comment outside",
+		"*/",
 		"# include <stdio.h>",
 		"",
 		"void		other_func(char **str)",
@@ -87,14 +91,18 @@ int			main()
 		NULL,
 		"	};",
 		"",
-		"	// Comment inside",
+		"	/*",
+		"		Comment inside",
+		"	*/",
 		"	other_func(str);",
 		"	return (0);",
 		"}",
 		NULL
 	};
 
-	// Comment inside
+	/*
+		Comment inside
+	*/
 	other_func(str);
 	return (0);
 }
