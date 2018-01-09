@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/09 12:05:55 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/09 14:50:34 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,16 @@ R = "\033[31m"
 G = "\033[32m"
 B = "\033[34m"
 C = "\033[36m"
+BG = "\033[32;1m"
+BB = "\033[34;1m"
+WR = "\033[0m""\033[31;5m"
 X = "\033[0m"
 UP = "\033[A"
 CUT = "\033[K"
 
 ############################## RULES ###########################################
 
-all: quine ${QUINE1} ${QUINE2} ${QUINE3}
+all: art ${QUINE1} ${QUINE2} ${QUINE3}
 
 ${QUINE1}: ${OBJ1}
 	@echo ${B}Compiling [${QUINE1}]...${X}
@@ -96,11 +99,20 @@ silent: ${QUINE1} ${QUINE2} ${QUINE3}
 quine:
 	@cat Makefile
 
-diff: silent
-	./Colleen > tmp_Colleen ; diff tmp_Colleen Colleen.c
+diff: art silent
+	./Colleen > tmp_Colleen; diff srcs/Colleen.c tmp_Colleen
 	# ./Grace; diff srcs/Grace.c Grace_kid.c
 	# ./Sully; diff srcs/Sully.c Sully_0.c
 
+art:
+	@echo ${BG}
+	@echo "--.   --..,_   _,.--.   --..,_   _,.--.   --..,_   _,.--.   --..,_   _,.--."
+	@echo ""${WR}"o"${X}${BG}"  \`;__. \`'.:'\`__ "${WR}"o"${X}${BG}"  \`;__. \`'.:'\`__ "${WR}"o"${X}${BG}"  \`;__. \`'.:'\`__ "${WR}"o"${X}${BG}"  \`;__. \`'.:'\`__ "${WR}"o"${X}${BG}"  \`;__."
+	@echo "---'\`  \`  .'.:\`. '---'\`  \`  .'.:\`. '---'\`  \`  .'.:\`. '---'\`  \`  .'.:\`. '---'\`  \`"
+	@echo "--....--'\`.'  '.\`'--....--'\`.'  '.\`'--....--'\`.'  '.\`'--....--'\`.'  '.\`'--...."
+	@echo "--....--'\`      \`'--....--'\`      \`'--....--'\`      \`'--....--'\`      \`'--...."
+	@echo ${X}
+
 ############################## PHONY ###########################################
 
-.PHONY: all clean fclean re test quine silent diff
+.PHONY: all clean fclean re test quine silent diff art
