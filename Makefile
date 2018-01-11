@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/11 18:38:15 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 21:33:16 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,8 @@ diff_grace: ${QUINE2}
 
 diff_sully: ${QUINE3}
 	@./Sully
+	@echo ${WB}"-- diff Sully 5--"${X}
+	@diff srcs/Sully.c Sully_5.c && echo ${WB}"-- diff Sully 5--"${X}
 	@echo ${WB}"-- diff Sully 4--"${X}
 	@diff srcs/Sully.c Sully_4.c || echo ${WB}"-- diff Sully 4--"${X}
 	@echo ${WB}"-- diff Sully 3--"${X}
@@ -133,9 +135,19 @@ bonus:
 	@echo ${WR}"-- diff Grace --"${X}
 	@node bonus/Grace.js && diff bonus/Grace.js Grace_kid.js
 	@echo ${WR}"-- diff Grace --"${X}
-	@echo ${WB}"-- diff Sully --"${X}
 	@node bonus/Sully.js
-	@echo ${WB}"-- diff Sully --"${X}
+	@echo ${WB}"-- diff Sully 5--"${X}
+	@diff bonus/Sully.js Sully_5.js && echo ${WB}"-- diff Sully 5--"${X}
+	@echo ${WB}"-- diff Sully 4--"${X}
+	@diff bonus/Sully.js Sully_4.js || echo ${WB}"-- diff Sully 4--"${X}
+	@echo ${WB}"-- diff Sully 3--"${X}
+	@diff bonus/Sully.js Sully_3.js || echo ${WB}"-- diff Sully 3--"${X}
+	@echo ${WB}"-- diff Sully 2--"${X}
+	@diff bonus/Sully.js Sully_2.js || echo ${WB}"-- diff Sully 2--"${X}
+	@echo ${WB}"-- diff Sully 1--"${X}
+	@diff bonus/Sully.js Sully_1.js || echo ${WB}"-- diff Sully 1--"${X}
+	@echo ${WB}"-- diff Sully 0--"${X}
+	@diff bonus/Sully.js Sully_0.js || echo ${WB}"-- diff Sully 0--"${X}
 
 art:
 	@echo ${BG}
