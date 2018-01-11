@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/11 18:16:51 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 18:38:15 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJ1 = $(addprefix ${OBJDIR}/, $(SRC1:.c=.o))
 OBJ2 = $(addprefix ${OBJDIR}/, $(SRC2:.c=.o))
 OBJ3 = $(addprefix ${OBJDIR}/, $(SRC3:.c=.o))
 
-KIDS = tmp_Colleen Grace_kid.c Sully_*.c Sully_*
+KIDS = tmp_Colleen Grace_kid.* Sully_*.* Sully_*
 
 ############################## COLORS ##########################################
 
@@ -44,6 +44,7 @@ C = "\033[36m"
 BG = "\033[32;1m"
 BB = "\033[34;1m"
 WR = "\033[0m""\033[31;5m"
+WG = "\033[0m""\033[32;5m"
 WB = "\033[0m""\033[34;5m"
 X = "\033[0m"
 UP = "\033[A"
@@ -101,14 +102,14 @@ quine:
 	@cat Makefile
 
 diff_colleen: ${QUINE1}
-	@echo ${WB}"-- diff Colleen --"${X}
+	@echo ${WG}"-- diff Colleen --"${X}
 	@./Colleen > tmp_Colleen && diff srcs/Colleen.c tmp_Colleen
-	@echo ${WB}"-- diff Colleen --"${X}
+	@echo ${WG}"-- diff Colleen --"${X}
 
 diff_grace: ${QUINE2}
-	@echo ${WB}"-- diff Grace --"${X}
+	@echo ${WR}"-- diff Grace --"${X}
 	@/bin/rm -f Grace_kid.c; ./Grace && diff srcs/Grace.c Grace_kid.c
-	@echo ${WB}"-- diff Grace --"${X}
+	@echo ${WR}"-- diff Grace --"${X}
 
 diff_sully: ${QUINE3}
 	@./Sully
@@ -126,11 +127,14 @@ diff_sully: ${QUINE3}
 diff: art diff_colleen diff_grace diff_sully
 
 bonus:
-	node bonus/Colleen.js > tmp_Colleen && diff bonus/Colleen.js tmp_Colleen
-	@echo ${WB}"-- diff Colleen --"${X}
-	node bonus/Grace.js
-	@echo ${WB}"-- diff Grace --"${X}
-	node bonus/Sully.js
+	@echo ${WG}"-- diff Colleen -- diff bonus/Colleen.js tmp_Colleen"${X}
+	@node bonus/Colleen.js > tmp_Colleen && diff bonus/Colleen.js tmp_Colleen
+	@echo ${WG}"-- diff Colleen -- diff bonus/Grace.js Grace_kid.js"${X}
+	@echo ${WR}"-- diff Grace --"${X}
+	@node bonus/Grace.js && diff bonus/Grace.js Grace_kid.js
+	@echo ${WR}"-- diff Grace --"${X}
+	@echo ${WB}"-- diff Sully --"${X}
+	@node bonus/Sully.js
 	@echo ${WB}"-- diff Sully --"${X}
 
 art:
