@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/09 16:30:25 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 17:05:00 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,7 +110,7 @@ diff_grace: ${QUINE2}
 
 diff_sully: ${QUINE3}
 	@echo ${WB}"-- diff Sully --"${X}
-	@./Sully && diff srcs/Sully.c Sully_0.c Sully_1.c
+	@./Sully && diff srcs/Sully.c Sully_4.c
 
 diff: art diff_colleen diff_grace diff_sully
 
