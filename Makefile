@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/11 21:33:16 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 22:54:45 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ C = "\033[36m"
 BG = "\033[32;1m"
 BB = "\033[34;1m"
 WR = "\033[0m""\033[31;5m"
+WC = "\033[0m""\033[36;5m"
 WG = "\033[0m""\033[32;5m"
 WB = "\033[0m""\033[34;5m"
 X = "\033[0m"
@@ -107,9 +108,9 @@ diff_colleen: ${QUINE1}
 	@echo ${WG}"-- diff Colleen --"${X}
 
 diff_grace: ${QUINE2}
-	@echo ${WR}"-- diff Grace --"${X}
+	@echo ${WC}"-- diff Grace --"${X}
 	@/bin/rm -f Grace_kid.c; ./Grace && diff srcs/Grace.c Grace_kid.c
-	@echo ${WR}"-- diff Grace --"${X}
+	@echo ${WC}"-- diff Grace --"${X}
 
 diff_sully: ${QUINE3}
 	@./Sully
@@ -129,12 +130,10 @@ diff_sully: ${QUINE3}
 diff: art diff_colleen diff_grace diff_sully
 
 bonus:
-	@echo ${WG}"-- diff Colleen -- diff bonus/Colleen.js tmp_Colleen"${X}
-	@node bonus/Colleen.js > tmp_Colleen && diff bonus/Colleen.js tmp_Colleen
-	@echo ${WG}"-- diff Colleen -- diff bonus/Grace.js Grace_kid.js"${X}
-	@echo ${WR}"-- diff Grace --"${X}
-	@node bonus/Grace.js && diff bonus/Grace.js Grace_kid.js
-	@echo ${WR}"-- diff Grace --"${X}
+	@echo ${WG}"-- diff Colleen --"${X}
+	@node bonus/Colleen.js > tmp_Colleen && diff bonus/Colleen.js tmp_Colleen && echo ${WG}"-- diff Colleen --"${X}
+	@echo ${WC}"-- diff Grace --"${X}
+	@node bonus/Grace.js && diff bonus/Grace.js Grace_kid.js && echo ${WC}"-- diff Grace --"${X}
 	@node bonus/Sully.js
 	@echo ${WB}"-- diff Sully 5--"${X}
 	@diff bonus/Sully.js Sully_5.js && echo ${WB}"-- diff Sully 5--"${X}
