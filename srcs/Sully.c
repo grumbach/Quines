@@ -6,7 +6,7 @@
 
 void			replicate(char **code, const int x)
 {
-	const int	fd			= open(code[0], O_CREAT | O_WRONLY, 0600);
+	const int	fd			= open(code[0], O_CREAT | O_WRONLY | O_TRUNC, 0600);
 	const char	*line		= code[2];
 	const char	*quoted		= code[3];
 	const char	*variable_x	= code[4];
@@ -52,7 +52,7 @@ int				main(void)
 		"",
 		"void			replicate(char **code, const int x)",
 		"{",
-		"	const int	fd			= open(code[0], O_CREAT | O_WRONLY, 0600);",
+		"	const int	fd			= open(code[0], O_CREAT | O_WRONLY | O_TRUNC, 0600);",
 		"	const char	*line		= code[2];",
 		"	const char	*quoted		= code[3];",
 		"	const char	*variable_x	= code[4];",

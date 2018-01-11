@@ -22,7 +22,7 @@
 		"	char	*b = *str++;",\
 		"	char	*c = *str++;",\
 		"	",\
-		"	int fd = open(filename, O_CREAT | O_WRONLY, 0600);",\
+		"	int fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);",\
 		"	",\
 		"	while (*str)",\
 		"	{",\
@@ -88,7 +88,7 @@
 	char	*b = *str++;\
 	char	*c = *str++;\
 	\
-	int fd = open(filename, O_CREAT | O_WRONLY, 0600);\
+	int fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);\
 	\
 	while (*str)\
 	{\

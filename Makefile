@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/11 18:09:14 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 18:16:51 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,14 +103,25 @@ quine:
 diff_colleen: ${QUINE1}
 	@echo ${WB}"-- diff Colleen --"${X}
 	@./Colleen > tmp_Colleen && diff srcs/Colleen.c tmp_Colleen
+	@echo ${WB}"-- diff Colleen --"${X}
 
 diff_grace: ${QUINE2}
 	@echo ${WB}"-- diff Grace --"${X}
 	@/bin/rm -f Grace_kid.c; ./Grace && diff srcs/Grace.c Grace_kid.c
+	@echo ${WB}"-- diff Grace --"${X}
 
 diff_sully: ${QUINE3}
-	@echo ${WB}"-- diff Sully --"${X}
-	@./Sully && diff srcs/Sully.c Sully_4.c
+	@./Sully
+	@echo ${WB}"-- diff Sully 4--"${X}
+	@diff srcs/Sully.c Sully_4.c || echo ${WB}"-- diff Sully 4--"${X}
+	@echo ${WB}"-- diff Sully 3--"${X}
+	@diff srcs/Sully.c Sully_3.c || echo ${WB}"-- diff Sully 3--"${X}
+	@echo ${WB}"-- diff Sully 2--"${X}
+	@diff srcs/Sully.c Sully_2.c || echo ${WB}"-- diff Sully 2--"${X}
+	@echo ${WB}"-- diff Sully 1--"${X}
+	@diff srcs/Sully.c Sully_1.c || echo ${WB}"-- diff Sully 1--"${X}
+	@echo ${WB}"-- diff Sully 0--"${X}
+	@diff srcs/Sully.c Sully_0.c || echo ${WB}"-- diff Sully 0--"${X}
 
 diff: art diff_colleen diff_grace diff_sully
 
