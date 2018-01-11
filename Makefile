@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/11 17:12:15 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 18:09:14 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,6 +114,14 @@ diff_sully: ${QUINE3}
 
 diff: art diff_colleen diff_grace diff_sully
 
+bonus:
+	node bonus/Colleen.js > tmp_Colleen && diff bonus/Colleen.js tmp_Colleen
+	@echo ${WB}"-- diff Colleen --"${X}
+	node bonus/Grace.js
+	@echo ${WB}"-- diff Grace --"${X}
+	node bonus/Sully.js
+	@echo ${WB}"-- diff Sully --"${X}
+
 art:
 	@echo ${BG}
 	@echo "--.   --..,_   _,.--.   --..,_   _,.--.   --..,_   _,.--.   --..,_   _,.--."
@@ -125,4 +133,4 @@ art:
 
 ############################## PHONY ###########################################
 
-.PHONY: all clean fclean re test quine silent art diff diff_colleen diff_grace diff_sully
+.PHONY: all clean fclean re test quine silent art diff diff_colleen diff_grace diff_sully bonus
