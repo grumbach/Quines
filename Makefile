@@ -6,7 +6,7 @@
 #    By: agrumbac <agrumbac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/09 11:27:05 by agrumbac          #+#    #+#              #
-#    Updated: 2018/01/11 17:05:00 by agrumbac         ###   ########.fr        #
+#    Updated: 2018/01/11 17:12:15 by agrumbac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJ1 = $(addprefix ${OBJDIR}/, $(SRC1:.c=.o))
 OBJ2 = $(addprefix ${OBJDIR}/, $(SRC2:.c=.o))
 OBJ3 = $(addprefix ${OBJDIR}/, $(SRC3:.c=.o))
 
-KIDS = tmp_Colleen Grace_kid.c Sully_*.c
+KIDS = tmp_Colleen Grace_kid.c Sully_*.c Sully_*
 
 ############################## COLORS ##########################################
 
